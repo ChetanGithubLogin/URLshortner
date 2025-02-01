@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+  </head>
+  <body>
+    <% if (locals.allUrls) { %>
+    <h1>Welcome to the home page</h1>
+    <% allUrls.forEach((url) => { %>
+    <li><%= url.redirectURL %> - <%= url.shortId %></li>
+    <% }) %> <% } %>
+
+    <div>
+      <% if (locals.id) { %>
+      <p>URL Generated : http://localhost:3000/api/url/<%= id %></p>
+      <% } %>
+    </div>
+    <div>
+      <form method="post" action="/api/url">
+        <label for="redirecURL">Enter the URL</label>
+        <input type="text" name="redirecURL" id="redirecURL" />
+        <button type="submit">Shorten</button>
+      </form>
+    </div>
+  </body>
+</html>
